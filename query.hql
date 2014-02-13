@@ -17,9 +17,18 @@ JOIN d_hotspot dh ON ft.hotspot_id = dh.id
 JOIN f_area fa ON fa.hotspot_id = dh.id
 JOIN d_place dp ON fa.place_id = dp.id;
 
+-- Analizziamo i place che hanno dato un contributo
+-- maggiore alla popolarità del tweet
+SELECT dp.name, SUM(status_retweet_count*fa.w_factor)
+FROM f_tweet ft
+JOIN d_hotspot dh ON ft.hotspot_id = dh.id
+JOIN f_area fa ON fa.hotspot_id = dh.id
+JOIN d_place dp ON fa.place_id = dp.id
+GROUP BY dp.name;
+
 -- Stessa query con weighting factor
 -- Mostriamo come queste due query restituiscono il medesimo risultato
-SELECT ft.date_id, ft.hotspot_id, SUM(status_favorite_count/total)
+SELECT ft.date_id, ft.hotspot_id, SUM(status_favorite_count*fa.w_factor)
 FROM f_tweet ft
 JOIN d_hotspot dh ON ft.hotspot_id = dh.id
 JOIN f_area fa ON fa.hotspot_id = dh.id
