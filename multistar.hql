@@ -24,6 +24,7 @@ user.friends_count AS user_friends_count
 FROM source.tweets;
 
 -- fact entity
+-- weighting factor: totale (hanno tutti lo stesso peso)
 CREATE TABLE f_entity AS
 SELECT
 id AS status_id,
@@ -32,6 +33,7 @@ size(entities.hashtags.text) AS total
 FROM source.tweets LATERAL VIEW explode(entities.hashtags.text) hTable AS hashtag_id;
 
 -- fact profile
+-- weighting factor: totale (hanno tutti lo stesso peso)
 CREATE TABLE f_profile AS
 SELECT
 id AS place_id,
@@ -40,7 +42,7 @@ size(types) AS total
 FROM source.places LATERAL VIEW explode(types) tTable AS type_id;
 
 -- fact area
--- weighting factor basato sulla distanza dall'hotspot
+-- weighting factor: distanza dall'hotspot
 CREATE TABLE f_area AS
 SELECT hotspot_id, place_id, 1/(distance*(sum(1/distance))) OVER (PARTITION BY hotspot_id) AS w_factor
 FROM (
