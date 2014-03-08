@@ -1,4 +1,4 @@
-CREATE TABLE source.tweets (
+CREATE TABLE local.tweets (
 contributors ARRAY<STRUCT<id:BIGINT,id_str:STRING,screen_name:STRING>>,
 coordinates STRUCT<coordinates:ARRAY<FLOAT>,type:STRING>,
 created_at STRING,

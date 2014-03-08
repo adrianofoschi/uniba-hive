@@ -1,6 +1,6 @@
-CREATE TABLE d_user AS
+CREATE TABLE multistar.d_user AS
 SELECT DISTINCT
 user.id,
 user.location,
 user.lang
-FROM source.tweets;
+FROM local.tweets;

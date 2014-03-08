@@ -1,6 +1,6 @@
-CREATE TABLE d_status AS
+CREATE TABLE multistar.d_status AS
 SELECT
 id,
 lang,
 text
-FROM source.tweets;
+FROM local.tweets;

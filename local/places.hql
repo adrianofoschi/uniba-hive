@@ -1,4 +1,4 @@
-CREATE TABLE source.places (
+CREATE TABLE local.places (
 events ARRAY<
  STRUCT<
   event_id:STRING,

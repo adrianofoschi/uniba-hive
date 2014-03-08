@@ -1,4 +1,4 @@
-CREATE TABLE source.hotspots (
+CREATE TABLE local.hotspots (
 address STRING, 
 longitude DOUBLE, 
 latitude DOUBLE
