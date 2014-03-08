@@ -1,0 +1,1 @@
+ADD JAR /root/extensions/Hive-JSON-Serde/target/json-serde-1.1.9.2-SNAPSHOT.jar;
