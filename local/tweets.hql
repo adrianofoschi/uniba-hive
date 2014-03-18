@@ -1,4 +1,4 @@
-CREATE TABLE local.tweets (
+CREATE EXTERNAL TABLE local.tweets (
 contributors ARRAY<STRUCT<id:BIGINT,id_str:STRING,screen_name:STRING>>,
 coordinates STRUCT<coordinates:ARRAY<FLOAT>,type:STRING>,
 created_at STRING,
@@ -130,6 +130,8 @@ user STRUCT<
 >,
 withheld_copyright BOOLEAN,
 withheld_in_countries ARRAY<STRING>,
-withheld_scope STRING
-) PARTITIONED BY(hotspot STRING)
-ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe' STORED AS TEXTFILE;
+withheld_scope STRING,
+hotspot_id STRING
+)
+ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe' STORED AS TEXTFILE
+LOCATION '/root/datasource/tweets/';

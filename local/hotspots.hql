@@ -1,7 +1,8 @@
-CREATE TABLE local.hotspots (
-address STRING, 
-longitude DOUBLE, 
-latitude DOUBLE
+CREATE EXTERNAL TABLE local.hotspots (
+address STRING,
+latitude DOUBLE,
+longitude DOUBLE,
+comune STRING
 )
-PARTITIONED BY(comune STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE
+LOCATION '/root/datasource/hotspots/';

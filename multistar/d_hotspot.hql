@@ -1,9 +1,9 @@
 CREATE TABLE multistar.d_hotspot AS
-SELECT
+SELECT DISTINCT
 CONCAT(latitude,',',longitude) AS id,
 latitude,
 longitude,
-collect_set(address) as addresses,
+address,
 comune
 FROM local.hotspots
-GROUP BY latitude,longitude,comune;
+WHERE latitude IS NOT NULL AND longitude IS NOT NULL;

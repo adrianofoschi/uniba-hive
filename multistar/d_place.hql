@@ -7,4 +7,5 @@ CAST(geometry.location.lng AS DOUBLE) as longitude,
 vicinity,
 types,
 formatted_address
-FROM local.places;
+FROM local.places
+WHERE id IS NOT NULL;

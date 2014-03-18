@@ -3,4 +3,5 @@ SELECT DISTINCT
 user.id,
 user.location,
 user.lang
-FROM local.tweets;
+FROM local.tweets
+WHERE user.id IS NOT NULL;

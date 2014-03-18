@@ -1,4 +1,4 @@
-CREATE TABLE local.places (
+CREATE EXTERNAL TABLE local.places (
 events ARRAY<
  STRUCT<
   event_id:STRING,
@@ -21,7 +21,8 @@ types ARRAY<STRING>,
 vicinity STRING,
 price_level STRING,
 rating FLOAT,
-formatted_address STRING
+formatted_address STRING,
+hotspot_id STRING
 )
-PARTITIONED BY(hotspot STRING)
-ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe' STORED AS TEXTFILE;
+ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe' STORED AS TEXTFILE
+LOCATION '/root/datasource/places/';
